@@ -1,5 +1,7 @@
-int Solution::candy(vector<int> &A) {
-    int n = A.size();
+class Solution {
+public:
+    int candy(vector<int>& A) {
+        /*int n = A.size();
     vector<int> left(n,1);
     vector<int> right(n,1);
     for(int i=1; i<n; i++)
@@ -8,7 +10,7 @@ int Solution::candy(vector<int> &A) {
         {
             left[i] = left[i-1]+1;
         }
-    }                                              // TC(3N) SC O(N)
+    }                                              // TC(3N) SC O(2N)
     for(int i=n-2; i>=0; i--)
     {
         if(A[i]>A[i+1])
@@ -22,4 +24,25 @@ int Solution::candy(vector<int> &A) {
         count += max(left[i],right[i]);
     }
     return count;
-}
+    }*/
+        int n = A.size();
+         vector<int> left(n,1);
+        for(int i=1; i<n; i++)
+    {
+        if(A[i]>A[i-1])
+        {
+            left[i] = left[i-1]+1;
+        }                                          // TC O(2N) O(N)
+    }  
+       int count=left[n-1];
+        for(int i=n-2; i>=0; i--)
+        {
+            if(A[i]>A[i+1])
+            {
+                left[i]= max(left[i],left[i+1]+1);
+            }
+            count += left[i];
+        }
+        return count;
+    }
+};
