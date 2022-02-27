@@ -1,0 +1,7 @@
+int Solution::maxp3(vector<int> &A) {
+    int n=A.size();
+    sort(A.begin(),A.end());
+    int s2= A[n-1]*A[n-2]*A[n-3];
+    int s3 = A[n-1]*A[0]*A[1];
+    return max({s2,s3});
+}
