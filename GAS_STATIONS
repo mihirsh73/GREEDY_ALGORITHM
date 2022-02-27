@@ -1,0 +1,25 @@
+bool static comp(pair<int,int> p1, pair<int,int>p2)
+{
+    
+}
+int Solution::canCompleteCircuit(const vector<int> &gas, const vector<int> &cost) {
+   int totalRemain =0;
+        int start = 0;
+        int remain =0;
+        
+        for (int i=0;i<gas.size();i++) {
+            totalRemain += gas[i] - cost[i];               // overall possible or not 
+            if(gas[i]+remain < cost[i]) {                     // check from particular index to end of array
+                start = i + 1;
+                remain = 0;
+            } else {
+                remain = remain + gas[i] - cost[i];             // TC O(N) SC o(1)
+            }
+        }
+        
+        if(totalRemain<0) return -1;
+        
+        return start;
+    
+}
+
