@@ -20,6 +20,22 @@ int Solution::canCompleteCircuit(const vector<int> &gas, const vector<int> &cost
         if(totalRemain<0) return -1;
         
         return start;
+         /*int n = gas.size();
+        for(int i=0; i<gas.size(); i++)
+        {
+            int total_range=0;
+            int steps=0;
+            int j=i;   // checking from the each index
+            while(steps<n)
+            {
+                total_range += gas[j%n]-cost[j%n];
+                if(total_range<0) break;
+                steps++;
+                j++;
+            }
+            if(steps==n && total_range>=0) return i;
+        }
+        return -1;*/
     
 }
 
